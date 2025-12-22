@@ -193,16 +193,14 @@ const UILibrarySection = ({ parentId, position }: { parentId?: string; position?
   const timeoutRef = useRef(null);
   const { t } = useTranslation();
 
-  const handleMouseEnter = (group: string) => {
+  const handleMouseEnter = () => {
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
       timeoutRef.current = null;
     }
 
-    timeoutRef.current = setTimeout(() => {
-      if (!timeoutRef.current) return;
-      setGroup(group);
-    }, 400);
+    // Removed automatic group selection on hover
+    // Groups should only be selected on click, not hover
   };
 
   const handleRetry = () => {
@@ -272,7 +270,7 @@ const UILibrarySection = ({ parentId, position }: { parentId?: string; position?
                   ) : (
                     map(mergedGroups, (_groupedBlocks, group) => (
                       <div
-                        onMouseEnter={() => handleMouseEnter(group)}
+                        onMouseEnter={() => handleMouseEnter()}
                         onMouseLeave={() => clearTimeout(timeoutRef.current)}
                         key={group}
                         role="button"

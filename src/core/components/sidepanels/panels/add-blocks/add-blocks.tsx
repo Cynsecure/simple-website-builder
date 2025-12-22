@@ -17,7 +17,7 @@ import { ScrollArea } from "@/ui/shadcn/components/ui/scroll-area";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/ui/shadcn/components/ui/tabs";
 import { useAtom } from "jotai";
 import { atomWithStorage } from "jotai/utils";
-import { capitalize, debounce, filter, find, map, reject, sortBy, values } from "lodash-es";
+import { capitalize, filter, find, map, reject, sortBy, values } from "lodash-es";
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -32,7 +32,6 @@ export const ChaiBuilderBlocks = ({ groups, blocks, parentId, position, gridCols
   const parentType = find(allBlocks, (block) => block._id === parentId)?._type;
   const [selectedGroup, setSelectedGroup] = useState<string | null>("all");
   const [hoveredGroup, setHoveredGroup] = useState<string | null>(null);
-  const debouncedSelectRef = useRef<any>(null);
 
   // Focus search input on mount and tab change
   useEffect(() => {
@@ -50,40 +49,20 @@ export const ChaiBuilderBlocks = ({ groups, blocks, parentId, position, gridCols
     }
   }, [searchTerm]);
 
-  // Initialize debounced function
-  useEffect(() => {
-    debouncedSelectRef.current = debounce((group: string) => {
-      setSelectedGroup(group);
-    }, 500);
-
-    return () => {
-      if (debouncedSelectRef.current) {
-        debouncedSelectRef.current.cancel();
-      }
-    };
-  }, []);
-
-  // Handle hover - update hovered group immediately but debounce the selection
+  // Handle hover - update hovered group immediately but don't auto-select
   const handleGroupHover = useCallback((group: string) => {
     setHoveredGroup(group);
-    if (debouncedSelectRef.current) {
-      debouncedSelectRef.current(group);
-    }
+    // Removed auto-selection on hover to prevent unintended selection
   }, []);
 
   // Handle mouse leave - clear hovered group
   const handleGroupLeave = useCallback(() => {
     setHoveredGroup(null);
-    if (debouncedSelectRef.current) {
-      debouncedSelectRef.current.cancel();
-    }
+    // Removed debounced selection cancellation since we no longer auto-select
   }, []);
 
   // Immediate selection on click
   const handleGroupClick = useCallback((group: string) => {
-    if (debouncedSelectRef.current) {
-      debouncedSelectRef.current.cancel();
-    }
     setSelectedGroup(group);
     setHoveredGroup(null);
   }, []);
