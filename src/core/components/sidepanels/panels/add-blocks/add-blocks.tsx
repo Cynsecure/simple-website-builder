@@ -135,9 +135,11 @@ export const ChaiBuilderBlocks = ({ groups, blocks, parentId, position, gridCols
                   onMouseEnter={() => handleGroupHover("all")}
                   onMouseLeave={handleGroupLeave}
                   className={`w-full rounded-md px-2 py-1.5 text-left text-sm font-medium ${
-                    selectedGroup === "all" || hoveredGroup === "all"
-                      ? "bg-primary text-primary-foreground"
-                      : "hover:bg-primary/50 hover:text-primary-foreground"
+                    selectedGroup === "all"
+                      ? "bg-blue-500 text-primary-foreground"
+                      : hoveredGroup === "all"
+                        ? "bg-gray-200"
+                        : "hover:bg-gray-200"
                   }`}>
                   {t("All")}
                 </button>
@@ -148,9 +150,11 @@ export const ChaiBuilderBlocks = ({ groups, blocks, parentId, position, gridCols
                     onMouseEnter={() => handleGroupHover(group)}
                     onMouseLeave={handleGroupLeave}
                     className={`w-full rounded-md px-2 py-1.5 text-left text-sm ${
-                      selectedGroup === group || hoveredGroup === group
-                        ? "bg-primary text-primary-foreground"
-                        : "hover:bg-primary/50 hover:text-primary-foreground"
+                      selectedGroup === group
+                        ? "bg-blue-500 text-primary-foreground"
+                        : hoveredGroup === group
+                          ? "bg-gray-200"
+                          : "hover:bg-gray-200"
                     }`}>
                     {capitalize(t(group.toLowerCase()))}
                   </button>
