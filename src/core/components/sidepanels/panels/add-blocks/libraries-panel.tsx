@@ -276,8 +276,8 @@ const UILibrarySection = ({ parentId, position }: { parentId?: string; position?
                         role="button"
                         onClick={() => setGroup(group)}
                         className={cn(
-                          "flex w-full cursor-pointer items-center justify-between rounded-md p-2 text-sm text-foreground transition-all ease-in-out hover:bg-gray-200 dark:hover:bg-gray-800",
-                          group === selectedGroup ? "bg-primary text-primary-foreground hover:bg-primary/80" : "",
+                          "flex w-full cursor-pointer items-center justify-between rounded-md p-2 text-sm text-foreground transition-all ease-in-out",
+                          group === selectedGroup ? "bg-blue-500 text-primary-foreground" : "hover:bg-gray-200",
                         )}>
                         <span>{capitalize(t(group.toLowerCase()))}</span>
                         <CaretRightIcon className="ml-2 h-5 w-5" />
