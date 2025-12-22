@@ -173,14 +173,14 @@ export function ManualClasses() {
             }}
           />
         </div>
-        <Button
+        {/* <Button
           variant="outline"
           className="h-6 border-border"
           onClick={addNewClasses}
           disabled={newCls.trim() === ""}
           size="sm">
           <PlusIcon />
-        </Button>
+        </Button> */}
       </div>
       <div className="flex w-full flex-wrap gap-2 overflow-x-hidden">
         {classes.map((cls: string, index: number) =>
