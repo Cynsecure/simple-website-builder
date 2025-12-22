@@ -273,8 +273,8 @@ const ListTree = () => {
           </Tree>
         </div>
       </div>
-      {/* <SaveToLibraryModal /> */}
-      {/* <PasteAtRootContextMenu parentContext={parentContext} setParentContext={setParentContext} /> */}
+      <SaveToLibraryModal />
+      <PasteAtRootContextMenu parentContext={parentContext} setParentContext={setParentContext} />
     </>
   );
 };
