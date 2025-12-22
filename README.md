@@ -85,3 +85,5 @@ If you like the project, you can assist us in expanding. ChaiBuilder is a collab
 ## Acknowledgments
 
 Chai Builder stands on the shoulders of many open-source libraries and tools. We extend our gratitude to the developers and maintainers of these projects for their contributions.
+
+Left side panel Outline -> src/core/components/sidepanels/panels/outline/list-tree.tsx

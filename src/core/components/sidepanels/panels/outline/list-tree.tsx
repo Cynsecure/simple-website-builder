@@ -201,7 +201,7 @@ const ListTree = () => {
                 disabled={!hasPermission(PERMISSIONS.ADD_BLOCK)}
                 onClick={() => pubsub.publish(CHAI_BUILDER_EVENTS.OPEN_ADD_BLOCK)}
                 variant="default"
-                className="bg-primary/80"
+                className="bg-blue-500"
                 size="sm">
                 + {t("Add Block")}
               </Button>
@@ -243,8 +243,8 @@ const ListTree = () => {
           <div className="group relative z-30 ml-5 w-full cursor-pointer">
             <div
               onClick={() => pubsub.publish(CHAI_BUILDER_EVENTS.OPEN_ADD_BLOCK, { position: 0 })}
-              className="h-1 w-[90%] rounded bg-primary opacity-0 duration-200 group-hover:opacity-100">
-              <div className="absolute left-[45%] top-1/2 flex h-4 w-4 -translate-x-1/2 -translate-y-1/2 transform items-center justify-center rounded-full bg-primary p-1 outline outline-2 outline-white hover:bg-primary">
+              className="h-1 w-[90%] rounded bg-blue-500 opacity-0 duration-200 group-hover:opacity-100">
+              <div className="absolute left-[45%] top-1/2 flex h-4 w-4 -translate-x-1/2 -translate-y-1/2 transform items-center justify-center rounded-full bg-primary p-1 outline outline-2 outline-white hover:bg-blue-500">
                 <PlusIcon className="h-3 w-3 stroke-[3] text-white" />
               </div>
             </div>
@@ -273,8 +273,8 @@ const ListTree = () => {
           </Tree>
         </div>
       </div>
-      <SaveToLibraryModal />
-      <PasteAtRootContextMenu parentContext={parentContext} setParentContext={setParentContext} />
+      {/* <SaveToLibraryModal /> */}
+      {/* <PasteAtRootContextMenu parentContext={parentContext} setParentContext={setParentContext} /> */}
     </>
   );
 };

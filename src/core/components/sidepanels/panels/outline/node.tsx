@@ -168,8 +168,8 @@ export const Node = memo(({ node, style, dragHandle }: NodeRendererProps<any>) =
           <div
             role="button"
             onClick={() => addBlockOnPosition(-1)}
-            className="h-1 rounded bg-primary opacity-0 duration-200 group-hover:opacity-100">
-            <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 transform items-center gap-x-1 rounded-full bg-primary px-3 py-1 text-[9px] leading-tight text-white hover:bg-primary">
+            className="h-1 rounded bg-blue-500 opacity-0 duration-200 group-hover:opacity-100">
+            <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 transform items-center gap-x-1 rounded-full bg-blue-500 px-3 py-1 text-[9px] leading-tight text-white hover:bg-blue-500">
               <PlusIcon className="h-2 w-2 stroke-[3]" /> {t("Add block")}
             </div>
           </div>
@@ -227,8 +227,8 @@ export const Node = memo(({ node, style, dragHandle }: NodeRendererProps<any>) =
                 }}
                 onMouseEnter={onMouseEnter}
                 onMouseLeave={onMouseLeave}
-                className="absolute -top-0.5 h-0.5 w-[90%] rounded bg-primary/80 opacity-0 delay-200 duration-200 group-hover:opacity-100">
-                <div className="absolute left-1/2 top-1/2 flex h-4 w-4 -translate-x-1/2 -translate-y-1/2 transform items-center justify-center rounded-full bg-primary/80 p-1 outline outline-2 outline-white hover:bg-primary/80">
+                className="absolute -top-0.5 h-0.5 w-[90%] rounded bg-blue-500 opacity-0 delay-200 duration-200 group-hover:opacity-100">
+                <div className="absolute left-1/2 top-1/2 flex h-4 w-4 -translate-x-1/2 -translate-y-1/2 transform items-center justify-center rounded-full bg-blue-500 p-1 outline outline-2 outline-white hover:bg-blue-500">
                   <PlusIcon className="h-2 w-2 stroke-[2] text-white" />
                 </div>
               </div>
@@ -237,12 +237,12 @@ export const Node = memo(({ node, style, dragHandle }: NodeRendererProps<any>) =
         <div
           className={cn(
             "group flex w-full cursor-pointer items-center justify-between space-x-px !rounded p-1 py-0 outline-none",
-            isSelected ? "bg-primary/20" : "hover:bg-primary/10",
+            isSelected ? "bg-blue-500/20" : "hover:bg-blue-500/10",
             willReceiveDrop && canAcceptChildBlock(data._type, "Icon") ? "bg-green-200" : "",
-            node?.id === addSelectParentHighlight ? "bg-primary/10" : "",
+            node?.id === addSelectParentHighlight ? "bg-blue-500/10" : "",
             isDragging && "opacity-20",
             !isShown ? "line-through opacity-50" : "",
-            isLibBlock && isSelected && "bg-primary/20 text-primary",
+            isLibBlock && isSelected && "bg-blue-500/20 text-primary",
           )}>
           <div className="flex items-center">
             <div
@@ -286,7 +286,7 @@ export const Node = memo(({ node, style, dragHandle }: NodeRendererProps<any>) =
               <Tooltip>
                 <TooltipTrigger
                   onClick={() => pubsub.publish(CHAI_BUILDER_EVENTS.OPEN_ADD_BLOCK, { _id: id })}
-                  className="cursor-pointer rounded bg-transparent p-px hover:bg-primary/10"
+                  className="cursor-pointer rounded bg-transparent p-px hover:bg-blue-500"
                   asChild>
                   <PlusIcon className="h-4 w-4" />
                 </TooltipTrigger>
@@ -304,7 +304,7 @@ export const Node = memo(({ node, style, dragHandle }: NodeRendererProps<any>) =
                     node.toggle();
                   }
                 }}
-                className="cursor-pointer rounded bg-transparent p-0.5 hover:bg-primary/10"
+                className="cursor-pointer rounded bg-transparent p-0.5 hover:bg-blue-500"
                 asChild>
                 {isShown ? <EyeClosedIcon className="h-4 w-4" /> : <EyeOpenIcon className="h-4 w-4" />}
               </TooltipTrigger>
@@ -313,7 +313,7 @@ export const Node = memo(({ node, style, dragHandle }: NodeRendererProps<any>) =
               </TooltipContent>
             </Tooltip>
             <BlockMoreOptions node={node} id={id}>
-              <div className="cursor-pointer rounded bg-transparent p-px hover:bg-primary/10">
+              <div className="cursor-pointer rounded bg-transparent p-px hover:bg-blue-500">
                 <DotsVerticalIcon className="h-3 w-3" />
               </div>
             </BlockMoreOptions>
