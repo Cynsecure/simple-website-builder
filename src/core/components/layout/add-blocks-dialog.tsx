@@ -30,7 +30,7 @@ export const AddBlocksDialog = () => {
       {/* Backdrop */}
       <div className="fixed inset-0 bg-black/80" onClick={() => setOpen(false)} />
       {/* Dialog */}
-      <div className="relative z-50 w-full max-w-5xl rounded-lg bg-background p-6 shadow-lg">
+      <div className="relative z-50 w-full max-w-5xl rounded-lg bg-popover p-6 shadow-lg">
         {/* Header */}
         <div className="flex flex-row items-center justify-between">
           <h2 className="text-lg font-semibold text-foreground">{t("Add blocks")}</h2>
