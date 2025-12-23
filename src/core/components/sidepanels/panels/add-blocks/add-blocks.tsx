@@ -136,7 +136,7 @@ export const ChaiBuilderBlocks = ({ groups, blocks, parentId, position, gridCols
                   onMouseLeave={handleGroupLeave}
                   className={`w-full rounded-md px-2 py-1.5 text-left text-sm font-medium ${
                     selectedGroup === "all"
-                      ? "bg-blue-500 text-primary-foreground"
+                      ? "bg-blue-500 text-white"
                       : hoveredGroup === "all"
                         ? "bg-gray-200"
                         : "hover:bg-gray-200"
@@ -151,7 +151,7 @@ export const ChaiBuilderBlocks = ({ groups, blocks, parentId, position, gridCols
                     onMouseLeave={handleGroupLeave}
                     className={`w-full rounded-md px-2 py-1.5 text-left text-sm ${
                       selectedGroup === group
-                        ? "bg-blue-500 text-primary-foreground"
+                        ? "bg-blue-500 text-white"
                         : hoveredGroup === group
                           ? "bg-gray-200"
                           : "hover:bg-gray-200"
