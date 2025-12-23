@@ -261,7 +261,7 @@ const RootLayout: ComponentType = () => {
             {/* Side Panel */}
             <motion.div
               id="left-panel"
-              className="h-full max-h-full border-r border-border"
+              className="h-full max-h-screen border-r border-border"
               initial={{ width: leftPanelWidth }}
               animate={{ width: leftPanelWidth }}
               transition={{ duration: 0.3, ease: "easeInOut" }}>
@@ -279,7 +279,7 @@ const RootLayout: ComponentType = () => {
                 </div>
               )}
             </motion.div>
-            <div id="canvas-container" className="flex h-full max-h-full flex-1 flex-col bg-slate-800/20">
+            <div id="canvas-container" className="flex h-full max-h-screen flex-1 flex-col bg-slate-800/20">
               <CanvasTopBar />
               <Suspense>
                 {/* <CssThemeVariables theme={builderTheme as ChaiBuilderThemeValues} /> */}
@@ -288,7 +288,7 @@ const RootLayout: ComponentType = () => {
             </div>
             <motion.div
               id="right-panel"
-              className="h-full max-h-full border-l border-border"
+              className="h-full max-h-screen border-l border-border"
               initial={{ width: activePanel === "ai" ? 0 : DEFAULT_PANEL_WIDTH }}
               animate={{ width: activePanel === "ai" ? 0 : DEFAULT_PANEL_WIDTH }}
               transition={{ duration: 0.3, ease: "easeInOut" }}>
