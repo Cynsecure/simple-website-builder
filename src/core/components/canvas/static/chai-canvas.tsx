@@ -64,6 +64,10 @@ const useHandleCanvasDblClick = () => {
       const blockId = chaiBlock.getAttribute("data-block-id");
       if (!blockId || !chaiBlock) return;
 
+      // Check if block has data-editable="false" attribute
+      const isNonEditable = chaiBlock.getAttribute("data-editable") === "false";
+      if (isNonEditable) return;
+
       // * Checking for repeater items index
       const repeater = chaiBlock.closest('[data-block-type="Repeater"]');
       if (repeater) {
