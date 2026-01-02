@@ -112,6 +112,17 @@ const BlockFloatingSelector = ({ block, selectedBlockElement }: BlockActionProps
   const { editingBlockId } = useInlineEditing();
   const { document } = useFrame();
 
+  // Check if block has data-editable="false" in any styles_attrs
+  const isNonEditable =
+    block &&
+    Object.keys(block).some((key) => {
+      if (key.endsWith("_attrs")) {
+        const attrs = block[key];
+        return attrs && attrs["data-editable"] === "false";
+      }
+      return false;
+    });
+
   // * Floating element position and size
   const { floatingStyles, refs, update } = useFloating({
     placement: "top-start",
@@ -158,7 +169,8 @@ const BlockFloatingSelector = ({ block, selectedBlockElement }: BlockActionProps
     }
   }, [selectedBlockElement]);
 
-  if (!selectedBlockElement || !block || editingBlockId) return null;
+  // Hide floating actions for non-editable blocks
+  if (!selectedBlockElement || !block || editingBlockId || isNonEditable) return null;
 
   return (
     <>

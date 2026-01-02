@@ -71,6 +71,19 @@ const SettingsPanel: React.FC = () => {
 
   const isPartialBlock = selectedBlock && selectedBlock._type === "PartialBlock";
 
+  // Check if block has data-editable="false" in any styles_attrs
+  const isNonEditable = React.useMemo(() => {
+    if (!selectedBlock) return false;
+    const blockKeys = Object.keys(selectedBlock);
+    return blockKeys.some((key) => {
+      if (key.endsWith("_attrs")) {
+        const attrs = selectedBlock[key];
+        return attrs && attrs["data-editable"] === "false";
+      }
+      return false;
+    });
+  }, [selectedBlock]);
+
   if (isPartialBlock) {
     return <PartialWrapper partialBlockId={selectedBlock.partialBlockId} />;
   }
@@ -83,6 +96,19 @@ const SettingsPanel: React.FC = () => {
           <h3 className="text-textSecondary text-sm font-medium">
             {t("Please select a block to edit settings or styles")}
           </h3>
+        </div>
+      </div>
+    );
+  }
+
+  // Show read-only message if block is marked as non-editable
+  if (isNonEditable) {
+    return (
+      <div className="flex items-center justify-center p-4 text-center">
+        <div className="space-y-4 rounded-xl bg-blue-50 p-4 text-blue-700">
+          <MixerHorizontalIcon className="mx-auto text-3xl" />
+          <h3 className="text-sm font-medium">{t("Preview Only")}</h3>
+          <p className="text-xs">{t("This block is not editable. This is how it will look in the final output.")}</p>
         </div>
       </div>
     );
