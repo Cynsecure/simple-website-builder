@@ -52,6 +52,7 @@ export type SavePageData = {
   theme?: ChaiThemeValues;
   needTranslations?: boolean;
   domElements?: any;
+  screenshot?: string;
 };
 
 type TimeInSeconds = number;
