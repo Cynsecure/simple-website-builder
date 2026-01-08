@@ -68,9 +68,9 @@ const PageTypeField = ({
   );
 
   const handleSelect = (pageTypeItem: PageTypeItem) => {
-    const href = ["pageType", pageType, pageTypeItem.id];
-    if (!href[1]) return;
-    onChange(href.join(":"));
+    const href = pageTypeItem.slug;
+    // if (!href[1]) return;
+    onChange(href);
     setSearchQuery(pageTypeItem.name);
     setIsSearching(false);
     setPageTypeItems([]);
