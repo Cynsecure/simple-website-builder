@@ -76,14 +76,9 @@ export default () => {
 
 ---
 
-## Support
+## BUILD AND PACK
 
-If you like the project, you can assist us in expanding. ChaiBuilder is a collaborative endeavor crafted by developers in their free time. We value every contribution, no matter how modest, as each one represents a significant step forward in various ways, particularly in fueling our drive to enhance this tool continually.
-
-<a href="https://www.buymeacoffee.com/chaibuilder" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 25px !important;width: 117px !important;" ></a>
-
-## Acknowledgments
-
-Chai Builder stands on the shoulders of many open-source libraries and tools. We extend our gratitude to the developers and maintainers of these projects for their contributions.
+npm run build
+npm pack
 
 Left side panel Outline -> src/core/components/sidepanels/panels/outline/list-tree.tsx
