@@ -9,7 +9,8 @@ import RteMenubar from "@/core/rjsf-widgets/rte-widget/rte-menu-bar";
 import { ChaiBlock } from "@/types/chai-block";
 import { getRegisteredChaiBlock } from "@chaibuilder/runtime";
 import { useDebouncedCallback } from "@react-hookz/web";
-import { BubbleMenu, EditorContent } from "@tiptap/react";
+import { EditorContent } from "@tiptap/react";
+import { BubbleMenu } from "@tiptap/react/menus";
 import { cloneDeep, get, has } from "lodash-es";
 import { createElement, memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 
@@ -108,7 +109,6 @@ const RichTextEditor = memo(
           <BubbleMenu
             editor={editor}
             shouldShow={() => editor && editor?.isFocused}
-            tippyOptions={{ duration: 100, arrow: true, hideOnClick: false }}
             className="w-max">
             <RteMenubar editor={editor} from="canvas" />
           </BubbleMenu>
