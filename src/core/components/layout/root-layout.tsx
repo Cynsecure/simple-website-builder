@@ -18,7 +18,6 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/ui/shadcn/compon
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/ui/shadcn/components/ui/tooltip";
 import { Cross1Icon, LightningBoltIcon, MixerHorizontalIcon, StackIcon } from "@radix-ui/react-icons";
 import { useFeature } from "flagged";
-import { motion } from "framer-motion";
 import { compact, find, first, get, reverse } from "lodash-es";
 // import { defaultThemeValues } from "@/core/hooks/default-theme-options";
 // import { ChaiBuilderThemeValues } from "@/types/types";
@@ -261,12 +260,10 @@ const RootLayout: ComponentType = () => {
             </div>
 
             {/* Side Panel */}
-            <motion.div
+            <div
               id="left-panel"
               className="h-full max-h-full border-r border-border bg-paper"
-              initial={{ width: leftPanelWidth }}
-              animate={{ width: leftPanelWidth }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}>
+              style={{ width: leftPanelWidth }}>
               {activePanel !== null && get(activePanelItem, "view", "standard") === "standard" && (
                 <div className="no-scrollbar flex h-full flex-col overflow-hidden px-3 py-2">
                   <div
@@ -280,7 +277,7 @@ const RootLayout: ComponentType = () => {
                   </div>
                 </div>
               )}
-            </motion.div>
+            </div>
             <div id="canvas-container" className="flex h-full max-h-full flex-1 flex-col bg-slate-800/20">
               <CanvasTopBar />
               <Suspense>
@@ -288,12 +285,10 @@ const RootLayout: ComponentType = () => {
                 <CanvasArea />
               </Suspense>
             </div>
-            <motion.div
+            <div
               id="right-panel"
               className="h-full max-h-full border-l border-border bg-paper"
-              initial={{ width: activePanel === "ai" ? 0 : DEFAULT_PANEL_WIDTH }}
-              animate={{ width: activePanel === "ai" ? 0 : DEFAULT_PANEL_WIDTH }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}>
+              style={{ width: activePanel === "ai" ? 0 : DEFAULT_PANEL_WIDTH }}>
               <div className="no-scrollbar overflow h-full max-h-full overflow-hidden">
                 <div className="flex h-full max-h-full flex-col overflow-hidden p-3">
                   <h2 className="-mt-1 flex items-center space-x-1 text-base font-bold">
@@ -330,7 +325,7 @@ const RootLayout: ComponentType = () => {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </main>
         </div>
         <AddBlocksDialog />
@@ -379,19 +374,13 @@ const RootLayout: ComponentType = () => {
         )}
         {/* Overlay View */}
         {activePanel !== null && get(activePanelItem, "view") === "overlay" && (
-          <motion.div
+          <div
             className="absolute bottom-0 left-12 right-0 top-0 z-50"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}>
+            >
             <div className="h-full w-full">
-              <motion.div
+              <div
                 className="flex h-full w-full flex-col bg-background"
-                initial={{ y: -20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: 20, opacity: 0 }}
-                transition={{ duration: 0.3, delay: 0.1 }}>
+                >
                 <div className="flex h-[50px] items-center justify-between border-b border-border p-4">
                   <div className="-ml-2 flex items-center gap-2 text-lg font-bold">
                     <span className="rtl:ml-2 rtl:inline-block">{get(activePanelItem, "icon", null)}</span>
@@ -408,9 +397,9 @@ const RootLayout: ComponentType = () => {
                     })}
                   </Suspense>
                 </div>
-              </motion.div>
+              </div>
             </div>
-          </motion.div>
+          </div>
         )}
       </TooltipProvider>
     </div>

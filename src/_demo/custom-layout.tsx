@@ -12,7 +12,6 @@ import {
 } from "@/core/main";
 import { ScrollArea } from "@/ui/shadcn/components/ui/scroll-area";
 import { TooltipProvider } from "@/ui/shadcn/components/ui/tooltip";
-import { motion } from "framer-motion";
 import { ChevronDownIcon, ImageIcon, StackIcon, GearIcon, TextIcon } from "@radix-ui/react-icons";
 import React, { Suspense, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -86,11 +85,9 @@ export default function CustomLayout() {
           </div>
 
           {/* Side Panel */}
-          <motion.div
+          <div
             className="h-full max-h-full overflow-hidden border-r border-gray-300 bg-white"
-            initial={{ width: 300 }}
-            animate={{ width: activePanelIndex !== null ? 300 : 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}>
+            style={{ width: activePanelIndex !== null ? 300 : 0 }}>
             {activePanelIndex !== null && (
               <ScrollArea className="h-full">
                 <div className="flex flex-col p-4">
@@ -104,13 +101,10 @@ export default function CustomLayout() {
                 </div>
               </ScrollArea>
             )}
-          </motion.div>
+          </div>
 
           {/* Main Content / Canvas */}
-          <motion.div
-            className="flex-1 bg-gray-100"
-            animate={{ marginLeft: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}>
+          <div className="flex-1 bg-gray-100">
             <div className="flex h-full w-full flex-col items-center justify-center rounded-lg bg-transparent">
               <div className="mt-1 w-full flex-1">
                 <Suspense fallback={<div>Loading...</div>}>
@@ -118,7 +112,7 @@ export default function CustomLayout() {
                 </Suspense>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </TooltipProvider>

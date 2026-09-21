@@ -4,7 +4,7 @@
   "private": false,
   "author": "Suraj Air",
   "license": "BSD-3-Clause",
-  "version": "0.0.5",
+  "version": "0.0.3",
   "type": "module",
   "repository": {
     "type": "git",
@@ -136,7 +136,6 @@
     "cmdk": "^1.1.1",
     "culori": "^4.0.2",
     "flagged": "3.0.0",
-    "framer-motion": "12.23.20",
     "fuse.js": "7.1.0",
     "himalaya": "^1.1.0",
     "i18next": "25.5.2",
@@ -203,9 +202,5 @@
   },
   "engines": {
     "node": ">=21.0.0"
-  },
-  "overrides": {
-    "motion-dom": "12.23.20",
-    "motion-utils": "12.23.6"
   }
 }
