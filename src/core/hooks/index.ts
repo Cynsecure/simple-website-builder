@@ -25,6 +25,7 @@ import { usePermissions } from "@/core/hooks/use-permissions";
 import { usePreviewMode } from "@/core/hooks/use-preview-mode";
 import { useRemoveBlocks } from "@/core/hooks/use-remove-blocks";
 import { useRemoveAllClassesForBlock, useRemoveClassesFromBlocks } from "@/core/hooks/use-remove-classes-from-blocks";
+import { usePublishPage, builderPublishStateAtom } from "@/core/hooks/use-publish-page";
 import { useResetBlockStyles } from "@/core/hooks/use-reset-block-styles";
 import { useSavePage } from "@/core/hooks/use-save-page";
 import { useSelectedBlockAllClasses, useSelectedBlockCurrentClasses } from "@/core/hooks/use-select-block-classes";
@@ -74,6 +75,8 @@ export {
   usePasteBlocks,
   usePermissions,
   usePreviewMode,
+  usePublishPage,
+  builderPublishStateAtom,
   useRemoveAllClassesForBlock,
   useRemoveBlocks,
   useRemoveClassesFromBlocks,

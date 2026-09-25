@@ -261,6 +261,18 @@ export interface ChaiBuilderEditorProps {
   onSaveStateChange?: (syncStatus: "SAVED" | "SAVING" | "UNSAVED") => void;
 
   /**
+   * onPublish callback function
+   * @param publishData
+   */
+  onPublish?: ({ blocks, theme, autoSave, domElements }: SavePageData) => Promise<boolean | Error>;
+
+  /**
+   * onPublishStateChange callback function
+   * @param syncStatus
+   */
+  onPublishStateChange?: (syncStatus: "PUBLISHED" | "PUBLISHING" | "NOT_PUBLISHED") => void;
+
+  /**
    * onPreview
    */
   onPreview?: () => void;

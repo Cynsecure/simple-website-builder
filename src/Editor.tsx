@@ -33,6 +33,17 @@ function ChaiBuilderDefault() {
   const [blocks] = useAtom(lsBlocksAtom);
   const [theme, setTheme] = useAtom(lsThemeAtom);
   console.log("EDITOR 1");
+
+  const handlePublish = async ({ blocks, theme, needTranslations, domElements, canvasDisplayWidth }: SavePageData) => {
+    console.log("onPublish", blocks, theme, needTranslations, domElements, canvasDisplayWidth);
+    console.log("HTML:", domElements);
+    localStorage.setItem("chai-builder-blocks", JSON.stringify(blocks));
+    localStorage.setItem("chai-builder-theme", JSON.stringify(theme));
+    setTheme(theme);
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    return true;
+  };
+
   return (
     <ChaiBuilderEditor
       _tempProps={{
@@ -60,6 +71,7 @@ function ChaiBuilderDefault() {
         await new Promise((resolve) => setTimeout(resolve, 100));
         return true;
       }}
+      onPublish={handlePublish}
       onPreview={() => {
         window.open("/preview", "_blank");
         // alert("onPreview");
