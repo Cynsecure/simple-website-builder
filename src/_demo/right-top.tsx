@@ -2,7 +2,6 @@ import { useBuilderProp, usePublishPage, useRightPanel, useSavePage } from "@/co
 import { Button } from "@/ui/shadcn/components/ui/button";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/ui/shadcn/components/ui/tooltip";
 import { CheckIcon, EyeOpenIcon, MixerHorizontalIcon, ReloadIcon, UploadIcon } from "@radix-ui/react-icons";
-import { toast } from "sonner";
 
 export default function RightTop() {
   const [panel, setRightPanel] = useRightPanel();
@@ -15,9 +14,8 @@ export default function RightTop() {
   const handlePublish = async () => {
     try {
       await publishPage();
-      toast.success("Page published successfully!");
     } catch (error) {
-      toast.error("Failed to publish page");
+      console.log("ERROR: ", error);
     }
   };
 
@@ -54,22 +52,12 @@ export default function RightTop() {
           <TooltipContent>Preview</TooltipContent>
         </Tooltip>
 
-        <Button
-          variant="secondary"
-          size="sm"
-          className="gap-2"
-          onClick={() => savePage(false)}
-          disabled={isSaving}>
+        <Button variant="secondary" size="sm" className="gap-2" onClick={() => savePage(false)} disabled={isSaving}>
           {isSaving ? <ReloadIcon className="h-4 w-4 animate-spin" /> : <CheckIcon className="h-4 w-4" />}
           {isSaving ? "Saving..." : saveState === "UNSAVED" ? "Draft" : "Saved"}
         </Button>
 
-        <Button
-          variant="default"
-          size="sm"
-          className="gap-2"
-          onClick={handlePublish}
-          disabled={isPublishing}>
+        <Button variant="default" size="sm" className="gap-2" onClick={handlePublish} disabled={isPublishing}>
           {isPublishing ? <ReloadIcon className="h-4 w-4 animate-spin" /> : <UploadIcon className="h-4 w-4" />}
           {isPublishing ? "Publishing..." : "Publish"}
         </Button>
