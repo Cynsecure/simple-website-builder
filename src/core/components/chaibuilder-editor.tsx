@@ -22,7 +22,7 @@ import { ChaiBuilderEditorProps } from "@/types/index";
 import { syncBlocksWithDefaults } from "@chaibuilder/runtime";
 import { useIntervalEffect } from "@react-hookz/web";
 import { useAtom } from "jotai/index";
-import { each, noop, omit } from "lodash-es";
+import { each, noop, omit, isEqual as lodashIsEqual, isFunction as lodashIsFunction, omitBy as lodashOmitBy } from "lodash-es";
 import React, { useEffect, useMemo } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { Toaster } from "sonner";
@@ -54,16 +54,29 @@ const ChaiWatchers = (props: ChaiBuilderEditorProps) => {
   const { postMessage } = useBroadcastChannel();
   const [, setIsPageLoaded] = useAtom(isPageLoadedAtom);
 
+  const prevProps = React.useRef<any>(null);
   useEffect(() => {
-    builderStore.set(
-      // @ts-ignore
-      chaiBuilderPropsAtom,
-      omit(props, ["blocks", "translations", "pageExternalData"]),
-    );
+    const omitted = omit(props, ["blocks", "translations", "pageExternalData"]);
+    // Ignore functions when comparing to prevent infinite loops from inline functions
+    const withoutFunctions = lodashOmitBy(omitted, lodashIsFunction);
+    
+    if (!lodashIsEqual(prevProps.current, withoutFunctions)) {
+      builderStore.set(
+        // @ts-ignore
+        chaiBuilderPropsAtom,
+        omitted,
+      );
+      prevProps.current = withoutFunctions;
+    }
   }, [props]);
 
+  const prevExternalData = React.useRef<any>(null);
   useEffect(() => {
-    builderStore.set(chaiPageExternalDataAtom, props.pageExternalData || {});
+    const externalData = props.pageExternalData || {};
+    if (!lodashIsEqual(prevExternalData.current, externalData)) {
+      builderStore.set(chaiPageExternalDataAtom, externalData);
+      prevExternalData.current = externalData;
+    }
   }, [props.pageExternalData]);
 
   useEffect(() => {
