@@ -52,7 +52,7 @@ export default function RightTop() {
           <TooltipContent>Preview</TooltipContent>
         </Tooltip>
 
-        <Button variant="secondary" size="sm" className="gap-2" onClick={() => savePage(false)} disabled={isSaving}>
+        <Button variant="outline" size="sm" className="gap-2" onClick={() => savePage(false)} disabled={isSaving}>
           {isSaving ? <ReloadIcon className="h-4 w-4 animate-spin" /> : <CheckIcon className="h-4 w-4" />}
           {isSaving ? "Saving..." : saveState === "UNSAVED" ? "Draft" : "Saved"}
         </Button>
